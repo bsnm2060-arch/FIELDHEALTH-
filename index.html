@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b59">
+<title>فيلد هيلث — منظومة المراقبة الصحية الميدانية</title>
+<style>
+:root{--navy:#123b59;--blue:#2b6b93;--bg:#f4f7fa;--card:#fff;--text:#17212b;--muted:#64748b;--line:#d9e3ea;--green:#19734a;--amber:#b66b00;--red:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Tahoma,"Noto Sans Arabic",Arial,sans-serif;color:var(--text);line-height:1.65}
+header{background:linear-gradient(135deg,#123b59,#2e7098);color:#fff;padding:20px 0}.wrap{max-width:1150px;margin:auto;padding:0 18px}
+.brandrow{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border:2px solid #fff;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:16px;direction:ltr}.brand{font-size:24px;font-weight:900}.tag{font-size:12px;opacity:.88}
+nav{display:flex;gap:7px;overflow:auto;padding:12px 0}nav button{border:0;border-radius:10px;padding:10px 14px;background:#e4edf3;color:var(--navy);font-weight:800;white-space:nowrap;font-family:inherit}nav button.active{background:var(--navy);color:#fff}
+.page{display:none}.page.active{display:block}.hero{border-radius:18px;padding:28px;color:#fff;background:linear-gradient(135deg,#123b59,#397aa0);box-shadow:0 5px 22px #123b5922;margin-bottom:16px}.hero h1{font-size:29px;margin:0 0 10px}.hero p{line-height:1.8;max-width:800px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}@media(max-width:760px){.grid,.grid3,.stats{grid-template-columns:1fr}}
+.card,.stat{background:#fff;border-radius:16px;padding:18px;box-shadow:0 3px 16px #123b5910;margin-bottom:16px}.card h2{margin:0 0 13px;font-size:19px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.stat{margin:0}.label{font-size:11px;color:var(--muted);font-weight:800}.num{font-size:28px;font-weight:900;margin-top:6px}
+label{display:block;font-size:13px;font-weight:800;margin:0 0 6px}input,select,textarea{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:#fff;font:inherit;direction:rtl}textarea{min-height:85px}
+.btn{border:0;border-radius:9px;padding:11px 15px;font-weight:900;margin:3px;font-family:inherit}.primary{background:var(--navy);color:#fff}.light{background:#e6eef4;color:var(--navy)}.green{background:var(--green);color:#fff}.danger{background:var(--red);color:#fff}
+.notice{padding:13px;border-radius:10px;background:#fff6e5;border-right:4px solid var(--amber);line-height:1.7}.ok{background:#edf8f1;border-right-color:var(--green)}.bad{background:#fff0ef;border-right-color:var(--red)}
+.small{font-size:12px;color:var(--muted);line-height:1.7}.pill{display:inline-block;border-radius:30px;background:#e7eef4;padding:4px 9px;font-size:11px;font-weight:800}
+table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid var(--line);font-size:13px;text-align:right}th{background:#eef3f7}.scroll{overflow:auto}
+.bar{height:14px;background:#e7eef4;border-radius:20px;overflow:hidden}.fill{height:100%;background:#2b6b93}.kpi{font-size:12px;font-weight:800;margin:8px 0 4px}
+ol,ul{padding-right:25px}footer{text-align:center;padding:25px;color:var(--muted);font-size:11px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="brandrow"><div class="logo">خ م</div><div><div class="brand">فيلد هيلث | FIELDHEALTH</div><div class="tag">المراقبة الصحية والبيئية الميدانية دون اتصال بالإنترنت</div></div></div></div></header>
+<main class="wrap">
+<nav>
+<button class="active" data-page="dashboard">لوحة التحكم</button>
+<button data-page="new">حالة جديدة</button>
+<button data-page="cases">سجل الحالات</button>
+<button data-page="analytics">التحليلات</button>
+<button data-page="demo">عرض المسابقة</button>
+<button data-page="pitch">عرض الابتكار</button>
+<button data-page="about">عن المشروع</button>
+</nav>
+
+<section id="dashboard" class="page active">
+<div class="hero"><h1>المراقبة الصحية دون الاعتماد على البنية التحتية.</h1><p>جمع البيانات ← التحقق منها ← تحليلها محليًا ← اكتشاف الإشارات ← إعداد التقرير. نموذج أولي مصمم للعمل دون اتصال بالإنترنت في البيئات محدودة الموارد.</p><button class="btn light" onclick="openPage('new')">＋ تسجيل حالة جديدة</button><button class="btn light" onclick="openPage('demo')">▶ تشغيل العرض التجريبي</button></div>
+<div class="stats"><div class="stat"><div class="label">إجمالي الحالات</div><div class="num" id="sTotal">0</div></div><div class="stat"><div class="label">الإشارات المرصودة</div><div class="num" id="sFlagged">0</div></div><div class="stat"><div class="label">اكتمال البيانات</div><div class="num" id="sComplete">0%</div></div><div class="stat"><div class="label">يعمل دون إنترنت</div><div class="num">نعم</div></div></div>
+<div class="grid3"><div class="card"><h2>الجمع</h2><p class="small">إدخال منظم للحالات باستخدام رمز موافقة بدلًا من الهوية المباشرة، مع القياسات المتاحة محليًا.</p></div><div class="card"><h2>التحليل</h2><p class="small">إجراء حسابات وصفية محلية دون الحاجة إلى اتصال بالإنترنت.</p></div><div class="card"><h2>التقرير</h2><p class="small">عرض إشارات المراقبة وتصدير ملخصات قابلة للمتابعة.</p></div></div>
+<div class="card"><h2>حالة النظام</h2><div class="notice ok"><b>النظام جاهز للعمل دون اتصال.</b><br>تخزين البيانات والحسابات الأساسية يتمان محليًا على الجهاز.</div></div>
+<div class="card"><h2>آخر النشاطات</h2><div id="recent">لا توجد حالات مسجلة بعد.</div></div>
+</section>
+
+<section id="new" class="page">
+<div class="card"><h2>١. التسجيل المجهّل</h2><div class="grid"><div><label>رمز الموافقة</label><input id="caseId"></div><div><label>المنطقة</label><select id="region"><option value="">اختر المنطقة</option><option>تل أبيض</option><option>الرقة</option><option>ريف دير الزور</option><option>حلب</option><option>أخرى</option></select></div><div><label>العمر</label><input id="age" type="number" min="18" max="100"></div><div><label>الجنس</label><select id="sex"><option value="">اختر</option><option>ذكر</option><option>أنثى</option></select></div></div></div>
+<div class="card"><h2>٢. المؤشرات الصحية التجريبية</h2><div class="small">حالة الاستخدام الأولية في هذا النموذج هي المراقبة الصحية الإنجابية. القيم الحدية الموجودة هنا تجريبية لغرض العرض فقط، وتحتاج إلى تحقق سريري قبل أي استخدام فعلي.</div><br><div class="grid"><div><label>تركيز النطاف (مليون/مل)</label><input id="conc" type="number" min="0" step=".1"></div><div><label>الحركة الكلية (%)</label><input id="mot" type="number" min="0" max="100" step=".1"></div><div><label>الأشكال الطبيعية (%)</label><input id="morph" type="number" min="0" max="100" step=".1"></div><div><label>AMH (نانوغرام/مل)</label><input id="amh" type="number" min="0" step=".01"></div></div></div>
+<div class="card"><h2>٣. ملاحظات الفحص المجهري</h2><div class="grid"><div><label>هل لوحظت شذوذات في الرأس؟</label><select id="head"><option>لا</option><option>نعم</option><option>لم يُقيّم</option></select></div><div><label>هل لوحظت شذوذات في القطعة الوسطى؟</label><select id="mid"><option>لا</option><option>نعم</option><option>لم يُقيّم</option></select></div></div></div>
+<div class="card"><h2>٤. ملاحظة ميدانية</h2><textarea id="notes" placeholder="ملاحظة اختيارية غير متضمنة لأي معلومات تعريفية مباشرة"></textarea></div>
+<div class="card"><button class="btn primary" onclick="saveCase()">حفظ وتحليل</button><button class="btn light" onclick="resetForm()">مسح</button><div id="result" style="margin-top:14px"></div></div>
+</section>
+
+<section id="cases" class="page"><div class="card"><h2>سجل الحالات</h2><input id="search" placeholder="ابحث برمز الموافقة أو المنطقة" oninput="renderCases()"><br><br><button class="btn light" onclick="exportCSV()">تصدير ملف CSV</button><button class="btn danger" onclick="wipe()">حذف البيانات المحلية</button></div><div class="card scroll"><div id="table">لا توجد حالات.</div></div></section>
+
+<section id="analytics" class="page"><div class="card"><h2>تحليلات المراقبة</h2><div class="small">هذه مؤشرات وصفية في النموذج الأولي فقط. لا تُستخدم لتشخيص المرض ولا لإثبات الانتشار أو السببية البيئية.</div><br><div id="analyticsBox">لا توجد بيانات.</div></div></section>
+
+<section id="demo" class="page">
+<div class="hero"><h1>العرض التجريبي أمام لجنة التحكيم — ٣ دقائق</h1><p>هذا هو التسلسل المقترح لعرض الابتكار أمام المحكّمين.</p></div>
+<div class="card"><h2>الخطوة ١ — المشكلة</h2><p>قد يفتقر العاملون الصحيون في البيئات محدودة الموارد إلى اتصال موثوق بالإنترنت أو أجهزة حاسوب أو بنية تحتية مركزية للمراقبة الصحية.</p></div>
+<div class="card"><h2>الخطوة ٢ — الحل</h2><p><b>فيلد هيلث يحوّل الهاتف الذكي المتاح إلى محطة مراقبة صحية تعمل دون اتصال.</b></p><p>جمع البيانات ← تحليل محلي ← اكتشاف إشارة ← إعداد تقرير ← مزامنة لاحقة.</p></div>
+<div class="card"><h2>الخطوة ٣ — العرض الحي</h2><ol><li>افتح «حالة جديدة».</li><li>أدخل حالة تجريبية غير تعريفية.</li><li>اضغط «حفظ وتحليل».</li><li>اعرض نتيجة الإشارة.</li><li>افتح «لوحة التحكم» ثم «التحليلات».</li><li>اشرح أن سير العمل الأساسي لا يعتمد على اتصال الإنترنت.</li></ol><button class="btn primary" onclick="openPage('new')">بدء الاختبار الحي</button></div>
+<div class="card"><h2>الخطوة ٤ — جملة الابتكار</h2><div class="notice ok"><b>«الابتكار ليس فحصًا مخبريًا جديدًا؛ بل طريقة للمراقبة الصحية تقلل الاعتماد على البنية التحتية، من خلال جمع البيانات ومعالجتها وإظهار الإشارات باستخدام أدوات متاحة أصلًا في الميدان.»</b></div></div>
+</section>
+
+<section id="pitch" class="page">
+<div class="card"><h2>عرض الابتكار — ٦٠ ثانية</h2><p><b>المشكلة:</b> في البيئات محدودة الموارد قد تبقى البيانات الصحية مجزأة بسبب ضعف الاتصال بالإنترنت ونقص أجهزة الحاسوب والبنية التحتية المتخصصة.</p><p><b>الحل:</b> فيلد هيلث منظومة مراقبة صحية تعمل أولًا دون اتصال، وتتيح للعاملين الميدانيين جمع بيانات منظمة وإجراء تحليل وصفي محلي وإظهار إشارات للمراقبة من الهاتف الذكي.</p><p><b>الابتكار:</b> تقليل الاعتماد على البنية التحتية من خلال نقل جمع البيانات والمعالجة الأساسية إلى الجهاز الموجود في الميدان.</p><p><b>العرض الأولي:</b> المراقبة الصحية الإنجابية باستخدام القياسات والملاحظات التشخيصية المتاحة محليًا وسجلات مجهّلة.</p><p><b>قابلية التوسع:</b> يمكن تكييف البنية نفسها مع حالات استخدام أخرى للمراقبة بعد التحقق العلمي والأمني والحوكمي.</p></div>
+<div class="card"><h2>أسئلة لجنة التحكيم وإجاباتها</h2><table><tr><th>السؤال</th><th>الإجابة المقترحة</th></tr><tr><td>هل هو جهاز تشخيص؟</td><td>لا. النموذج يعرض إشارات وصفية للمراقبة، وليس جهازًا تشخيصيًا معتمدًا.</td></tr><tr><td>هل يحتاج إلى الإنترنت؟</td><td>لا يحتاج سير العمل الأساسي في النموذج إلى الإنترنت. ويمكن مستقبلًا مزامنة البيانات عند عودة الاتصال.</td></tr><tr><td>ما الجديد فيه؟</td><td>الجمع المنظم والمعالجة المحلية وإظهار إشارات المراقبة ضمن سير عمل واحد مصمم لبيئات منخفضة البنية التحتية.</td></tr><tr><td>هل يمكن توسيعه؟</td><td>نعم من حيث التصميم، لكن التوسع الفعلي يحتاج إلى التحقق والأمن والحوكمة واختبارات متعددة المواقع.</td></tr><tr><td>ما الدليل الحالي؟</td><td>هناك إطار تجريبي وبيانات أولية في المشروع؛ والخطوة التالية هي التحقق المستقل من سهولة الاستخدام والجودة والتحليل الإحصائي.</td></tr></table></div>
+</section>
+
+<section id="about" class="page"><div class="card"><h2>عن فيلد هيلث</h2><p>فيلد هيلث نموذج أولي لابتكار في المراقبة الصحية الميدانية، قائم على العمل دون اتصال بالبنية التحتية، ومصمم للبيئات محدودة الموارد.</p><div class="notice">الخصوصية أولًا: استخدم رموز الموافقة فقط، ولا تدخل الأسماء أو أرقام الهواتف أو العناوين أو أرقام الملفات الطبية أو أي معلومات تعريفية مباشرة.</div><br><div class="notice">تنبيه: هذا النموذج الأولي ليس جهازًا طبيًا معتمدًا، ولا يجوز استخدامه لاتخاذ قرارات علاجية بشأن المرضى.</div></div><div class="card"><h2>خارطة الطريق</h2><ol><li>عرض النموذج الأولي.</li><li>اختبار مستقل لسهولة الاستخدام.</li><li>التحقق الإحصائي من بيانات الدراسة الأولية.</li><li>مراجعة الأمن والخصوصية.</li><li>إضافة المزامنة عند توفر الاتصال.</li><li>تجربة متعددة المواقع.</li><li>الدمج مستقبلًا مع برامج الصحة العامة أو العمل الإنساني.</li></ol></div></section>
+<footer>فيلد هيلث 2.0 • نموذج أولي للابتكار • نسخة تجريبية محلية</footer>
+</main>
+<script>
+const KEY="fieldhealth_v2";const $=id=>document.getElementById(id);
+const esc=x=>String(x??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+function data(){try{return JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){return[]}}
+function put(a){localStorage.setItem(KEY,JSON.stringify(a))}
+function nid(){return"KH-"+String(data().length+1).padStart(4,"0")}
+function openPage(p){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));$(p).classList.add("active");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===p));refresh()}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>openPage(b.dataset.page));
+function num(id){let v=parseFloat($(id).value);return Number.isFinite(v)?v:null}
+function signals(d){let s=[];if(d.conc!==null&&d.conc<15)s.push("إشارة تجريبية: انخفاض التركيز");if(d.mot!==null&&d.mot<40)s.push("إشارة تجريبية: انخفاض الحركة");if(d.morph!==null&&d.morph<4)s.push("إشارة تجريبية: انخفاض نسبة الأشكال الطبيعية");if(d.amh!==null&&d.amh<.2)s.push("إشارة تجريبية: قيمة AMH دون العتبة التجريبية");if(d.head==="نعم")s.push("تم تسجيل ملاحظة بشأن شكل الرأس");if(d.mid==="نعم")s.push("تم تسجيل ملاحظة بشأن القطعة الوسطى");return s}
+function saveCase(){let d={caseId:$("caseId").value.trim(),region:$("region").value,age:num("age"),sex:$("sex").value,conc:num("conc"),mot:num("mot"),morph:num("morph"),amh:num("amh"),head:$("head").value,mid:$("mid").value,notes:$("notes").value.trim(),time:new Date().toISOString()};let e=[];if(!d.caseId)e.push("يجب إدخال رمز الموافقة.");if(!d.region)e.push("يجب اختيار المنطقة.");if(!d.age)e.push("يجب إدخال العمر.");if(!d.sex)e.push("يجب اختيار الجنس.");if(d.mot!==null&&(d.mot<0||d.mot>100))e.push("يجب أن تكون الحركة بين 0 و100%.");if(d.morph!==null&&(d.morph<0||d.morph>100))e.push("يجب أن تكون نسبة الأشكال الطبيعية بين 0 و100%.");if(e.length){alert(e.join("\n"));return}let a=data();if(a.some(x=>x.caseId.toLowerCase()===d.caseId.toLowerCase())){alert("رمز الموافقة مستخدم مسبقًا.");return}d.signals=signals(d);d.status=d.signals.length?"تم رصد إشارة تجريبية":"لم تُرصد إشارة تجريبية";a.push(d);put(a);$("result").innerHTML=`<div class="notice ${d.signals.length?"":"ok"}"><b>${esc(d.status)}</b><br>${d.signals.length?d.signals.map(esc).join("<br>"):"لم تُسجّل أي إشارة تجريبية."}</div><div class="small">هذه إشارة للمراقبة فقط، وليست تشخيصًا ولا دليلًا على السببية البيئية.</div>`;refresh()}
+function resetForm(){$("caseId").value=nid();["region","age","sex","conc","mot","morph","amh","notes"].forEach(x=>$(x).value="");$("head").value="لا";$("mid").value="لا";$("result").innerHTML=""}
+function refresh(){let a=data(),f=a.filter(x=>x.signals?.length).length;$("sTotal").textContent=a.length;$("sFlagged").textContent=f;let total=a.length*7,done=0;a.forEach(x=>[x.region,x.age,x.sex,x.conc,x.mot,x.morph,x.amh].forEach(v=>{if(v!==null&&v!=="")done++}));$("sComplete").textContent=(total?Math.round(done/total*100):0)+"%";$("recent").innerHTML=a.length?a.slice().reverse().slice(0,5).map(x=>`<div class="card"><b>${esc(x.caseId)}</b><br><span class="small">${esc(x.region)} • ${esc(x.status)}</span></div>`).join(""):"لا توجد حالات مسجلة بعد.";renderCases();renderAnalytics()}
+function renderCases(){let q=($("search")?.value||"").toLowerCase(),a=data().filter(x=>x.caseId.toLowerCase().includes(q)||x.region.toLowerCase().includes(q));if(!a.length){$("table").textContent="لا توجد حالات مطابقة.";return}$("table").innerHTML=`<table><tr><th>رمز الموافقة</th><th>المنطقة</th><th>العمر</th><th>الجنس</th><th>الحالة</th></tr>${a.map(x=>`<tr><td>${esc(x.caseId)}</td><td>${esc(x.region)}</td><td>${x.age}</td><td>${esc(x.sex)}</td><td><span class="pill">${esc(x.status)}</span></td></tr>`).join("")}</table>`}
+function renderAnalytics(){let a=data();if(!a.length){$("analyticsBox").textContent="لا توجد بيانات.";return}let s=[["إشارة التركيز",a.filter(x=>x.conc!==null&&x.conc<15).length],["إشارة الحركة",a.filter(x=>x.mot!==null&&x.mot<40).length],["إشارة الأشكال الطبيعية",a.filter(x=>x.morph!==null&&x.morph<4).length],["إشارة AMH التجريبية",a.filter(x=>x.amh!==null&&x.amh<.2).length]];$("analyticsBox").innerHTML=s.map(x=>`<div class="kpi">${x[0]} — ${x[1]}</div><div class="bar"><div class="fill" style="width:${Math.min(100,a.length?x[1]/a.length*100:0)}%"></div></div>`).join("")}
+function exportCSV(){let a=data();if(!a.length){alert("لا توجد بيانات للتصدير.");return}let h=["رمز الموافقة","المنطقة","العمر","الجنس","التركيز","الحركة","الأشكال الطبيعية","AMH","الرأس","القطعة الوسطى","الحالة","الإشارات","التاريخ"],r=a.map(x=>[x.caseId,x.region,x.age,x.sex,x.conc,x.mot,x.morph,x.amh,x.head,x.mid,x.status,(x.signals||[]).join("; "),x.time]);let csv=[h,...r].map(z=>z.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\n"),u=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"})),a1=document.createElement("a");a1.href=u;a1.download="fieldhealth_dataset.csv";a1.click();URL.revokeObjectURL(u)}
+function wipe(){if(confirm("هل تريد حذف جميع بيانات النموذج الأولي المخزنة محليًا؟")){localStorage.removeItem(KEY);refresh();alert("تم حذف البيانات المحلية.")}}
+$("caseId").value=nid();refresh();
+</script>
+</body></html>
